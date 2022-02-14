@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Computer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=4]
+
+[node name="Node" type="Node"]
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 600.0 ],
+"_edit_vertical_guides_": [ 1025.0 ]
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1000, 300 )
+
+[node name="Computer" parent="." instance=ExtResource( 1 )]
+position = Vector2( 24, 300 )
+
+[node name="Ball" parent="." instance=ExtResource( 3 )]
+position = Vector2( 512, 300 )
+
+[connection signal="ballEntered" from="Player" to="." method="_on_ballEntered"]
+[connection signal="ballEntered" from="Computer" to="." method="_on_ballEntered"]
