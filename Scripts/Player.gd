@@ -3,6 +3,7 @@ extends Area2D
 signal ballEntered
 
 export var speed: float = 100.0
+var ballPosition: Vector2 = Vector2.ZERO
 
 func _process(delta):
 	var direction: Vector2 = Vector2.ZERO

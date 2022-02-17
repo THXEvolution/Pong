@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 export var velocity: Vector2 = Vector2(10.0, 0.0)
+export var reflectFactor: float = 0.1
 var methodToCall: String = ""
 
 func _ready():

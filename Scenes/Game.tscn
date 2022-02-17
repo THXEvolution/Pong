@@ -28,6 +28,7 @@ position = Vector2( 24, 300 )
 
 [node name="Ball" parent="." instance=ExtResource( 3 )]
 position = Vector2( 512, 300 )
+reflectFactor = 2.0
 
-[connection signal="ballEntered" from="Player" to="." method="_on_ballEntered"]
-[connection signal="ballEntered" from="Computer" to="." method="_on_ballEntered"]
+[connection signal="ballEntered" from="Player" to="." method="_on_ballEntered" binds= [ "Player" ]]
+[connection signal="ballEntered" from="Computer" to="." method="_on_ballEntered" binds= [ "Computer" ]]
