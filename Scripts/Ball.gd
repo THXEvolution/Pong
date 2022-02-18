@@ -10,13 +10,13 @@ func _ready():
 	
 func _physics_process(delta):
 	linear_velocity = velocity.normalized() * speed
+	
+	if test(position):
+		velocity = velocity.bounce(Vector2.UP)
+	
 	if methodToCall != "":
 		call(methodToCall)
 	
 func switchDirection():
 	velocity = velocity.reflect(Vector2.UP)
 	methodToCall = ""
-
-func _on_screen_exited():
-	print("Screen exited")
-	velocity = velocity.bounce(Vector2.UP)

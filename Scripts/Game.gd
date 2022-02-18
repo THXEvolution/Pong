@@ -11,3 +11,7 @@ func _on_ballEntered(which):
 		delta = ($Ball.position.y - $Computer.position.y) * $Ball.reflectFactor
 	$Ball.velocity.y = delta
 	$Ball.methodToCall = "switchDirection"
+
+
+func _on_Wall_body_entered(body):
+	
