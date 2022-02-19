@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Computer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Ball.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=4]
+[ext_resource path="res://Assets/middleline.png" type="Texture" id=5]
 
-[sub_resource type="LineShape2D" id=1]
-normal = Vector2( -0.00729908, -0.999973 )
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 101.431, 7.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 100.191, 10 )
 
 [node name="Node" type="Node"]
 script = ExtResource( 4 )
@@ -16,9 +20,28 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = -300.0
+margin_right = 512.0
+margin_bottom = 300.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="middleLine" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="middleLine"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
+margin_top = -1.0
+margin_bottom = -1.0
+texture = ExtResource( 5 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -39,16 +62,39 @@ reflectFactor = 0.5
 [node name="Wallup" type="Area2D" parent="Wall"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/Wallup"]
-position = Vector2( 512, 0 )
+position = Vector2( 512, -2.5 )
 scale = Vector2( 5.24, 1 )
 shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Wall/Wallup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_right = 1024.0
+margin_bottom = 5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Walldown" type="Area2D" parent="Wall"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/Walldown"]
 position = Vector2( 512, 600 )
 scale = Vector2( 5.24, 1 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="Wall/Walldown"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_top = 595.0
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="ballEntered" from="Player" to="." method="_on_ballEntered" binds= [ "Player" ]]
 [connection signal="ballEntered" from="Computer" to="." method="_on_ballEntered" binds= [ "Computer" ]]

@@ -1,7 +1,8 @@
 extends Node
 
 func _physics_process(delta):
-	$Computer.position.y = $Ball.position.y
+	if $Computer.moving:
+		$Computer.position.y = $Ball.position.y
 
 func _on_ballEntered(which):
 	var delta: float = 0.0
@@ -14,4 +15,4 @@ func _on_ballEntered(which):
 
 
 func _on_Wall_body_entered(body):
-	
+	$Ball.methodToCall = "bounceOffWall"
