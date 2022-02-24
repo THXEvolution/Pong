@@ -1,5 +1,10 @@
 extends Node
 
+var playerScore: int = 0 setget setPlayerScore
+var computerScore: int = 0 setget setComputerScore
+var _playerScore: int = 0
+var _computerScore: int = 0
+
 func _physics_process(delta):
 	if $Computer.moving:
 		$Computer.position.y = $Ball.position.y
@@ -16,3 +21,21 @@ func _on_ballEntered(which):
 
 func _on_Wall_body_entered(body):
 	$Ball.methodToCall = "bounceOffWall"
+
+
+func _on_Goal_body_entered(body, which):
+	if which == "Computer":
+		playerScore += 1
+		print("Goal")
+	elif which == "Player":
+		computerScore += 1
+	
+func setPlayerScore(score):
+	playerScore = score
+	$UI/PlayerScoreControl/PlayerScore.text = str(score)
+	print("updating")
+	
+func setComputerScore(score):
+	computerScore = score
+	$UI/ComputerScoreControl/ComputerScore.text = str(score)
+	print("updating")
