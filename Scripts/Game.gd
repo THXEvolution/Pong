@@ -25,10 +25,9 @@ func _on_Wall_body_entered(body):
 
 func _on_Goal_body_entered(body, which):
 	if which == "Computer":
-		playerScore += 1
-		print("Goal")
+		self.playerScore += 1
 	elif which == "Player":
-		computerScore += 1
+		self.computerScore += 1
 	
 func setPlayerScore(score):
 	playerScore = score
@@ -38,4 +37,3 @@ func setPlayerScore(score):
 func setComputerScore(score):
 	computerScore = score
 	$UI/ComputerScoreControl/ComputerScore.text = str(score)
-	print("updating")
