@@ -133,9 +133,12 @@ z_index = 1
 [node name="Computer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 24, 300 )
 z_index = 1
+collision_layer = 3
+collision_mask = 0
 
 [node name="Ball" parent="." instance=ExtResource( 3 )]
 position = Vector2( 512, 300 )
+collision_mask = 2
 speed = 300.0
 reflectFactor = 0.05
 
@@ -213,17 +216,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -270.0
+margin_left = -451.0
 margin_top = -152.0
-margin_right = 270.0
+margin_right = 451.0
 margin_bottom = -122.0
 custom_fonts/font = SubResource( 6 )
 text = "Wilkommen bei Pong"
 align = 1
 valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Start" type="Button" parent="StartCanvas/StartScreen"]
 anchor_left = 0.5
@@ -238,9 +238,6 @@ focus_mode = 0
 theme = ExtResource( 7 )
 enabled_focus_mode = 0
 text = "Start"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Quit" type="Button" parent="StartCanvas/StartScreen"]
 anchor_left = 0.5
